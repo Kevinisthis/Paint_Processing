@@ -1,36 +1,42 @@
 //startup
 void settings() {
-  size(1000,1000);
+  size(600,600);
 }
 
+int x;
 void setup() {
  background(255);
- frameRate (500000);
+ x = 15;
 }
+
 
 //draw
 void draw() {
-  stroke(0);
-  strokeWeight(2);
-  if (mousePressed) {
-    point (mouseX, mouseY);}
+  art();
     if (key == CODED) {
       if (keyCode == UP) {
-          stroke(255);
-          strokeWeight(5);
-          if (mousePressed) {
-              point (mouseX, mouseY);}
+          erase();
       if (keyCode == DOWN) {
-        stroke(0);
-        strokeWeight(2);
-        if (mousePressed) {
-              point (mouseX, mouseY);
+        art();
         }
       }
     }
   }
+
+void erase() {
+  stroke(255);
+  strokeWeight(x+5);
+  if (mousePressed) {
+  point (mouseX, mouseY);}
 }
 
+void art() {
+  stroke(0);
+  strokeWeight(x);
+  if (mousePressed) {
+    point (mouseX, mouseY);
+  }
+}
 /*
 Things to add
   Color Changer
