@@ -4,15 +4,23 @@ void settings() {
 }
 
 int x;
+int R;
+int G;
+int B;
+
 void setup() {
  background(255);
  x = 15;
+ R = 255;
+ G = 150;
+ B = 150;
 }
 
 
 //draw
 void draw() {
   art();
+  erase();
 }
 
 //erase tool
@@ -28,7 +36,7 @@ void erase() {
 
 //draw resume
 void art() {
-  stroke(0);
+  stroke(R,G,B);
   strokeWeight(x);
   if (mousePressed) {
     point (mouseX, mouseY);
@@ -50,6 +58,27 @@ void keyReleased() {
     draw();
   }
 }
+void keyPressed() {
+  if (key == 'q' || key == 'Q') {
+    ColorUpR();
+  }
+  if (key == 'w' || key == 'W') {
+    ColorUpG();
+  }
+  if (key == 'e' || key == 'E') {
+    ColorUpB();
+  }
+  if (key == 'a' || key == 'A') {
+    ColorDownR();
+  }
+  if (key == 's' || key == 'S') {
+    ColorDownG();
+  }
+  if (key == 'd' || key == 'D') {
+    ColorDownB();
+  }
+  print(key);
+}
 
 //clear all
 void CLEAR() {
@@ -70,7 +99,42 @@ void strokeWL() {
   }
 }
 
-/*
-Things to add
-  Color Changer
-*/
+//color changer
+void ColorUpR() {
+  stroke(R,G,B);
+  if (R <=249) {
+    stroke(R+5, G, B);
+  }
+}
+
+void ColorUpG() {
+  stroke(R,G,B);
+  if (G <=249) {
+    stroke(R, G+5, B);
+  }
+}
+
+void ColorUpB() {
+  stroke(R,G,B);
+  if (B <=249) {
+    stroke(R, G, B+5);
+  }
+}
+
+void ColorDownR() {
+  if (R >=6) {
+    stroke(R-5, G, B);
+  }
+}
+
+void ColorDownG() {
+  if (G >=6) {
+    stroke(R, G-5, B);
+  }
+}
+
+void ColorDownB() {
+  if (B >=6) {
+    stroke(R, G, B-5);
+  }
+}
